@@ -33,20 +33,6 @@ public class Head extends Staff {
         return st.getCourses().remove(c);
     }
 
-    public LinkedList<Student> getCoursesRelatedStudents() {
-        LinkedList<Student> students = new LinkedList<>();
-
-        for (Student student : IT.allStudents) {
-            for (Course course : getCourses()) {
-                if (student.getCourses().contains(course)) {
-                    students.add(student);
-                    break;
-                }
-            }
-        }
-        return students;
-    }
-
     public LinkedList<Student> generateMaxAbsenceList() {
         LinkedList<Student> maxAbsenceList = new LinkedList<>();
         LinkedList<Student> students = getCoursesRelatedStudents();
