@@ -4,7 +4,6 @@ public class Staff extends User {
     private double salary;
     private String experience;
     private String certificates;
-    private LinkedList<Student> Students;
 
     public Staff() {
         super();
@@ -66,14 +65,6 @@ public class Staff extends User {
         this.certificates = certificates;
     }
 
-    public LinkedList<Student> getStudents() {
-        return Students;
-    }
-
-    public void setStudents(LinkedList<Student> Students) {
-        this.Students = Students;
-    }
-
     public LinkedList<Student> getCourseRelatedStudents(Course course) {
         LinkedList<Student> students = new LinkedList<>();
 
@@ -99,7 +90,9 @@ public class Staff extends User {
             }
         }
         return students;
-    }public double getStudentsAttendanceRate(Course c){
+    }
+
+    public double getStudentsAttendanceRate(Course c){
 
         LinkedList<Student> sts = this.getCourseRelatedStudents(c);
 
@@ -134,9 +127,13 @@ public class Staff extends User {
         return attendedClasses/totalClasses;
     }
 
+
     @Override
     public String toString() {
-        return "Staff{" + "salary=" + salary + ", experience=" + experience + ", certificates=" + certificates + ", Students=" + Students + '}';
+        return "Staff{" +
+                "salary=" + salary +
+                ", experience='" + experience + '\'' +
+                ", certificates='" + certificates + '\'' +
+                '}';
     }
-
 }
