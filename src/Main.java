@@ -61,7 +61,19 @@ public class Main {
 
         IT.allStudents.get(1).showAttendanceRecord();
 
+        System.out.println("\n Student Name = " + IT.allStudents.get(0).getName());
+        System.out.println("\n Student class = " + IT.allStudents.get(0).getName().getClass());
 
+
+
+        it.addCourse(new Course("100222", "English", head));
+        it.assignHeadToCourse(head, IT.getAllCourses().getLast());
+        Student loai = new Student("Loay Ahmed", "011234213", new Account("loaiSalem@bue.edu.eg", "hello world"));
+        it.addStudent(loai);
+        it.enrollStudentToCourse(loai, IT.getAllCourses().getLast());
+        System.out.println(head.getCourses());
+
+        HeadUI headUI = new HeadUI(head);
         StartUp startUp = new StartUp();
     }
 }

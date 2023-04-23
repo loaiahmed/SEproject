@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class Student extends User {
     private double GPA;
@@ -92,6 +93,20 @@ public class Student extends User {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Student student = (Student) o;
+        return Double.compare(student.GPA, GPA) == 0 && strike == student.strike && Objects.equals(parents, student.parents) && Objects.equals(warnings, student.warnings);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), GPA, parents, warnings, strike);
+    }
+
+    @Override
     public String toString() {
         return "Student{" +
                 "GPA=" + GPA +
@@ -100,4 +115,5 @@ public class Student extends User {
                 ", strike=" + strike +
                 '}';
     }
+
 }

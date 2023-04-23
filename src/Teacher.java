@@ -29,23 +29,7 @@ public class Teacher extends Staff {
         super(name, phoneNumber, account, courses, attendance, salary, experience, certificates);
     }
 
-    double getStudentsAttendanceRate(Course c){
 
-        LinkedList<Student> sts = this.getCourseRelatedStudents(c);
-
-        double totalClasses = 0.0;
-        double attendedClasses = 0.0;
-
-        for(Student student: sts){
-            for(Attendance attendance : student.getAttendance()){
-                totalClasses +=1;
-                if(attendance.isPresent()){
-                    attendedClasses +=1;
-                }
-            }
-        }
-        return attendedClasses/totalClasses;
-    }
 
     void checkAsPresent(Attendance a) {
         a.setPresent(true);

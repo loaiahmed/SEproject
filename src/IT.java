@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -72,12 +73,18 @@ public class IT extends Staff {
             System.out.println("Student not found");
         }
         else{
-            allStudents.remove(s);
+            allStudents.remove(s.getUserID());
         }
     }
 
     public boolean enrollStudentToCourse(Student student, Course course){
-        if(!(allStudents.contains(student) && allCourses.contains(course))){
+        if(!(allStudents.contains(student))){
+            System.out.println(student);
+            System.out.println("student not in data");
+            return false;
+        }
+        if(!(allCourses.contains(course))){
+            System.out.println("course not in data");
             return false;
         }
         student.getCourses().add(course);

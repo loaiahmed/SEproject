@@ -87,6 +87,52 @@ public class Staff extends User {
         }
         return students;
     }
+    public LinkedList<Student> getCoursesRelatedStudents() {
+        LinkedList<Student> students = new LinkedList<>();
+
+        for (Student student : IT.allStudents) {
+            for (Course course : this.getCourses()) {
+                if (student.getCourses().contains(course)) {
+                    students.add(student);
+                    break;
+                }
+            }
+        }
+        return students;
+    }public double getStudentsAttendanceRate(Course c){
+
+        LinkedList<Student> sts = this.getCourseRelatedStudents(c);
+
+        double totalClasses = 0.0;
+        double attendedClasses = 0.0;
+
+        for(Student student: sts){
+            for(Attendance attendance : student.getAttendance()){
+                totalClasses +=1;
+                if(attendance.isPresent()){
+                    attendedClasses +=1;
+                }
+            }
+        }
+        return attendedClasses/totalClasses;
+    }
+    public double getStudentsAttendanceRate(){
+
+        LinkedList<Student> sts = this.getCoursesRelatedStudents();
+
+        double totalClasses = 0.0;
+        double attendedClasses = 0.0;
+
+        for(Student student: sts){
+            for(Attendance attendance : student.getAttendance()){
+                totalClasses +=1;
+                if(attendance.isPresent()){
+                    attendedClasses +=1;
+                }
+            }
+        }
+        return attendedClasses/totalClasses;
+    }
 
     @Override
     public String toString() {

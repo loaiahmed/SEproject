@@ -57,4 +57,14 @@ public class Head extends Staff {
         }
         return maxAbsenceList;
     }
+    public LinkedList<Student> generateMaxAbsenceList(Course course) {
+        LinkedList<Student> maxAbsenceList = new LinkedList<>();
+        LinkedList<Student> students = getCourseRelatedStudents(course);
+        for (Student student : students) {
+            if (student.getStrike() >= 6) {
+                maxAbsenceList.add(student);
+            }
+        }
+        return maxAbsenceList;
+    }
 }
