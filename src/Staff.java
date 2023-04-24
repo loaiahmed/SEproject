@@ -76,6 +76,21 @@ public class Staff extends User {
         return instanceOfAttendance;
     }
 
+    public LinkedList<Complaint> getCourseRelatedComplaints(Course c) {
+        LinkedList<Student> students = new LinkedList<>();
+        students = getCourseRelatedStudents(c);
+
+        LinkedList<Complaint> complaints = new LinkedList<>();
+
+        for(Complaint complaint: Teacher.complaints){
+            if(students.contains(complaint.getAttendance().getStudent())){
+                complaints.add(complaint);
+            }
+        }
+
+        return complaints;
+    }
+
     public LinkedList<Student> getCourseRelatedStudents(Course course) {
         LinkedList<Student> students = new LinkedList<>();
 

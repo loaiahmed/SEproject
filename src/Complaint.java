@@ -1,16 +1,29 @@
 public class Complaint {
+    private int complaintID;
     private String complaintText;
     private boolean accepted;
     private Attendance attendance;
+
+    private static int count = 0;
 
     public Complaint() {}
     
     
 
     public Complaint(String complaintText, Attendance attendance) {
+        this.complaintID = count;
         this.complaintText = complaintText;
         this.accepted = false;
         this.attendance = attendance;
+        count++;
+    }
+
+    public int getComplaintID() {
+        return complaintID;
+    }
+
+    public void setComplaintID(int complaintID) {
+        this.complaintID = complaintID;
     }
 
     public String getComplaintText() {
