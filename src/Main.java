@@ -86,5 +86,6 @@ public class Main {
         StudentUI studentUI = new StudentUI(loai);
         HeadUI headUI = new HeadUI(head);
         StartUp startUp = new StartUp();
+        TeacherUI t = new TeacherUI(teacher);
     }
 }
