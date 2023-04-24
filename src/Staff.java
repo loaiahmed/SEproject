@@ -65,6 +65,17 @@ public class Staff extends User {
         this.certificates = certificates;
     }
 
+    public LinkedList<Attendance> getCourseRelatedAttendance(Course c, int recordNo) {
+        LinkedList<Student> students = new LinkedList<>();
+        LinkedList<Attendance> instanceOfAttendance = new LinkedList<>();
+
+        students = getCourseRelatedStudents(c);
+        for(Student student: students){
+            instanceOfAttendance.add(student.showSpecificAttendanceRecord(recordNo));
+        }
+        return instanceOfAttendance;
+    }
+
     public LinkedList<Student> getCourseRelatedStudents(Course course) {
         LinkedList<Student> students = new LinkedList<>();
 
@@ -78,6 +89,8 @@ public class Staff extends User {
         }
         return students;
     }
+
+
     public LinkedList<Student> getCoursesRelatedStudents() {
         LinkedList<Student> students = new LinkedList<>();
 

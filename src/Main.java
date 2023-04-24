@@ -75,6 +75,7 @@ public class Main {
 
         HeadUI headUI = new HeadUI(head);
         StartUp startUp = new StartUp();
-        TeacherUI t = new TeacherUI(teacher);
+        //TeacherUI t = new TeacherUI(teacher);
+        TestUI te = new TestUI(teacher);
     }
 }

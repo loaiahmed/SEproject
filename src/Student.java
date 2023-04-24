@@ -87,6 +87,10 @@ public class Student extends User {
         }
     }
 
+    public Attendance showSpecificAttendanceRecord(int index){
+        return getAttendance().get(index);
+    }
+
     public void submitComplaint(Complaint complaint) {
         Teacher.complaints.add(complaint);
         System.out.println("Complaint submitted.");
