@@ -91,6 +91,18 @@ public class Staff extends User {
         return complaints;
     }
 
+    public LinkedList<Complaint> getCourseRelatedComplaints(Attendance a) {
+        LinkedList<Complaint> comps = new LinkedList<>();
+
+        for(Complaint complaint: Teacher.complaints){
+            if(a == complaint.getAttendance()){
+                comps.add(complaint);
+            }
+        }
+
+        return comps;
+    }
+
     public LinkedList<Student> getCourseRelatedStudents(Course course) {
         LinkedList<Student> students = new LinkedList<>();
 
