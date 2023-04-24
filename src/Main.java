@@ -73,6 +73,17 @@ public class Main {
         it.enrollStudentToCourse(loai, IT.getAllCourses().getLast());
         System.out.println(head.getCourses());
 
+        System.out.println(student1.getWarnings());
+        System.out.println(student1.getAttendance());
+
+        it.assignTeacherToCourse(teacher, IT.getAllCourses().getLast());
+        for(int i = 0; i < 6; i++) {
+            teacher.manageAttendance(loai, new Attendance(loai, teacher.getCourses().getLast(), false));
+        }
+        System.out.println(loai.getWarnings());
+
+
+        StudentUI studentUI = new StudentUI(loai);
         HeadUI headUI = new HeadUI(head);
         StartUp startUp = new StartUp();
     }

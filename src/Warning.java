@@ -3,16 +3,28 @@ import java.util.Objects;
 public class Warning {
     private final int warningID;
 //    private Student directedTo;
+    private final Course course;
+    private final String warningNumber;
     static int count = 0;
 
 
-    public Warning() {
+    public Warning(Course course, String warningNumber) {
         this.warningID = count;
+        this.course = course;
+        this.warningNumber = warningNumber;
         count++;
     }
 
     public int getWarningID() {
         return warningID;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public String  getWarningNumber() {
+        return warningNumber;
     }
 
     @Override

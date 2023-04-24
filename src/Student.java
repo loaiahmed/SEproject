@@ -87,6 +87,16 @@ public class Student extends User {
         }
     }
 
+    public LinkedList<Attendance> getCourseRelatedAttendance(Course course){
+        LinkedList<Attendance> attendances = new LinkedList<>();
+        for(Attendance attendance : getAttendance()){
+            if(attendance.getCourse().equals(course)){
+                attendances.add(attendance);
+            }
+        }
+        return attendances;
+    }
+
     public void submitComplaint(Complaint complaint) {
         Teacher.complaints.add(complaint);
         System.out.println("Complaint submitted.");

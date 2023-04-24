@@ -9,7 +9,6 @@ public class Attendance {
     private Course course;
     private boolean present;
     static int count = 0;
-    private int warningFlag = 0;
 
     public Attendance() {
     }
@@ -109,13 +108,12 @@ public class Attendance {
     }
 
     public void sendWarning(){
-        if(student.getStrike() == 3 && warningFlag == 0){
-            student.getWarnings().add(new Warning());
-            warningFlag++;
+        if(student.getStrike() == 2){
+            student.getWarnings().add(new Warning(this.course, "First Warning"));
         }
-        else if (student.getStrike() == 5 && warningFlag == 1){
-            student.getWarnings().add(new Warning());
-            warningFlag++;
+        else if (student.getStrike() == 5){
+            student.getWarnings().add(new Warning(this.course, "Second Warning"));
+
         }
 
     }
