@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class Login extends JFrame{
     private JButton login;
@@ -29,6 +30,8 @@ public class Login extends JFrame{
                 if(studentRadioButton.isSelected()) {
                     if (IT.isStudentWithAccount(textField1.getText(), password)) {
                         JOptionPane.showMessageDialog(login, "account found");
+                        new StudentUI(Objects.requireNonNull(IT.getStudentWithAccount(textField1.getText(), password)));
+
                     } else {
                         JOptionPane.showMessageDialog(login, "account not found");
                     }
@@ -36,6 +39,8 @@ public class Login extends JFrame{
                 if(headRadioButton.isSelected()) {
                     if (IT.isHeadWithAccount(textField1.getText(), password)) {
                         JOptionPane.showMessageDialog(login, "account found");
+                        new HeadUI(Objects.requireNonNull(IT.getHeadWithAccount(textField1.getText(), password)));
+
                     } else {
                         JOptionPane.showMessageDialog(login, "account not found");
                     }
@@ -43,6 +48,8 @@ public class Login extends JFrame{
                 if(teacherRadioButton.isSelected()) {
                     if (IT.isTeacherWithAccount(textField1.getText(), password)) {
                         JOptionPane.showMessageDialog(login, "account found");
+                        new TeacherUI(Objects.requireNonNull(IT.getTeacherWithAccount(textField1.getText(), password)));
+
                     } else {
                         JOptionPane.showMessageDialog(login, "account not found");
                     }

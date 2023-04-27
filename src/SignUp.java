@@ -53,19 +53,19 @@ public class SignUp extends JFrame{
                     Teacher teacher = new Teacher(nameField.getText(), phoneNumberField.getText(), new Account(userNameField.getText(), emailField.getText(), password));
                     IT.allTeachers.add(teacher);
 
-                    JOptionPane.showMessageDialog(signUpPanel, "Account Created");
+                    JOptionPane.showMessageDialog(signUpPanel, "Account Created, return to setup window and log in");
                 }
                 else if(headRadioButton.isSelected()){
                     Head head = new Head(nameField.getText(), phoneNumberField.getText(), new Account(userNameField.getText(), emailField.getText(), password));
                     IT.allHeads.add(head);
 
-                    JOptionPane.showMessageDialog(signUpPanel, "Account Created");
+                    JOptionPane.showMessageDialog(signUpPanel, "Account Created, return to setup window and log in");
                 }
                 else if(studentRadioButton.isSelected()){
                     Student student = new Student(nameField.getText(), phoneNumberField.getText(), new Account(userNameField.getText(), emailField.getText(), password));
                     IT.allStudents.add(student);
 
-                    JOptionPane.showMessageDialog(signUpPanel, "Account Created");
+                    JOptionPane.showMessageDialog(signUpPanel, "Account Created, return to setup window and log in");
                 }
                 else {
                     JOptionPane.showMessageDialog(signUpPanel, "SignUp failed: Select a checkBox", "Error", JOptionPane.ERROR_MESSAGE);

@@ -14,7 +14,7 @@ public class attendanceEditor extends JFrame{
         this.setContentPane(rootPanel);
 //        this.setSize(900, 600);
         this.pack();
-        this.setTitle("Head UI");
+        this.setTitle("Attendance editor");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
 

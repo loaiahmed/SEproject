@@ -156,6 +156,22 @@ public class IT extends Staff {
         System.out.println("couldn't find student with corresponding account");
         return null;
     }
+    public static Head getHeadWithAccount(String emailAddress, String password){
+        for( Head head : allHeads){
+            if(head.getAccount().getEmailAddress().equals(emailAddress) && head.getAccount().getPassword().equals(password)){
+                return head;
+            }
+        }
+        return null;
+    }
+    public static Teacher getTeacherWithAccount(String emailAddress, String password){
+        for( Teacher teacher : allTeachers){
+            if(teacher.getAccount().getEmailAddress().equals(emailAddress) && teacher.getAccount().getPassword().equals(password)){
+                return teacher;
+            }
+        }
+        return null;
+    }
     public static boolean isStudentWithAccount(String emailAddress, String password){
         for( Student student : allStudents){
             if(student.getAccount().getEmailAddress().equals(emailAddress) && student.getAccount().getPassword().equals(password)){
@@ -165,8 +181,8 @@ public class IT extends Staff {
         return false;
     }
     public static boolean isHeadWithAccount(String emailAddress, String password){
-        for( Teacher teacher : allTeachers){
-            if(teacher.getAccount().getEmailAddress().equals(emailAddress) && teacher.getAccount().getPassword().equals(password)){
+        for( Head head : allHeads){
+            if(head.getAccount().getEmailAddress().equals(emailAddress) && head.getAccount().getPassword().equals(password)){
                 return true;
             }
         }
