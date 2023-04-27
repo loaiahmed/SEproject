@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="8f4fe3b8-f24a-4dc8-a6a2-6caa816f9ba4" name="Apache Derby (Embedded) Mapping">
+      <data-sources db="0dcbf752-62f5-4fac-a92b-7fc4fc4810ea" ddl="29502e42-937e-49c9-bc89-3b089d173954" />
+    </mapping>
+  </component>
+</project>
