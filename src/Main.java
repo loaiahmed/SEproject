@@ -94,7 +94,9 @@ public class Main {
         }
         System.out.println("\n");
 
-        ManageAttendance manageAttendance = new ManageAttendance(IT.allStudents);
+//        ManageAttendance manageAttendance = new ManageAttendance(IT.allStudents);
+
+        new TeacherUI(teacher);
 
 //        ITUI itui = new ITUI(it);
 //        StudentUI studentUI = new StudentUI(loai);

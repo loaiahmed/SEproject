@@ -8,7 +8,7 @@ import java.util.Vector;
 public class TeacherUI extends JFrame{
     private JTabbedPane tabbedPane1;
     private JPanel rootPanel;
-    private JButton button1;
+    private JButton logoutButton;
     private JTextPane welcomeTeacherTextPane;
     private JTable table1;
     private JComboBox comboBox1;
@@ -17,21 +17,25 @@ public class TeacherUI extends JFrame{
     private JTable complaintsTable;
     private JButton editAttendanceButton;
     private JTextField textField1;
-    private JTable table3;
-    private JComboBox comboBox2;
+    private JTable searchTable;
     private JButton searchButton;
-    private JButton saveButton;
+    private JButton editAttendanceButton1;
 
-    private Teacher teacher;
+    private final Teacher teacher;
     TeacherUI(Teacher teacher){
         this.setContentPane(rootPanel);
         this.setSize(900, 600);
 //        this.pack();
-        this.setTitle("Head UI");
+        this.setTitle("Teacher UI");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
         this.teacher = teacher;
+
+
+        createComboBox(comboBox1);
+        createStudentsTable(teacher.getCoursesRelatedStudents());
+        createComplaintsTable(Teacher.complaints);
 
         updateButton.addActionListener(new ActionListener() {
             @Override
@@ -72,7 +76,26 @@ public class TeacherUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 Complaint complaint = (Complaint) getSelectedRow(complaintsTable);
+                new attendanceEditor(complaint.getAttendance());
+            }
+        });
+        searchButton.addActionListener(new ActionListener() {       // horrible search implementation needs improvement
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LinkedList<Student> teacherStudents = teacher.getCoursesRelatedStudents();
 
+                for (Student student : teacherStudents){
+                    if (Integer.toString(student.getUserID()).equals(textField1.getText())){
+                        createSearchTable(student);
+                        return;
+                    }
+                }
+            }
+        });
+        editAttendanceButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new attendanceEditor((Attendance) getSelectedRow(searchTable));
             }
         });
     }
@@ -122,20 +145,39 @@ public class TeacherUI extends JFrame{
         table1.getColumnModel().getColumn(5).setMinWidth(0);
     }
     public void createComplaintsTable(LinkedList<Complaint> complaints){
-        Object[][] data = new Object[complaints.size()][6];
+        Object[][] data = new Object[complaints.size()][3];
 
         for(int j = 0; j < complaints.size(); j++){
             data[j][0] = complaints.get(j).getComplaintText();
             data[j][1] = complaints.get(j).getAttendance();
             data[j][2] = complaints.get(j);
         }
-        table1.setModel(new DefaultTableModel(
+        complaintsTable.setModel(new DefaultTableModel(
                 data,
                 new String[] {"Complaint Text", "Attendance", "Complaint"}
         ));
-        table1.setAutoCreateRowSorter(true); // sorting of the rows on a particular column
-        table1.getColumnModel().getColumn(3).setMaxWidth(0);
-        table1.getColumnModel().getColumn(3).setMinWidth(0);
+        complaintsTable.setAutoCreateRowSorter(true); // sorting of the rows on a particular column
+        complaintsTable.getColumnModel().getColumn(2).setMaxWidth(0);
+        complaintsTable.getColumnModel().getColumn(2).setMinWidth(0);
+    }
+    public void createSearchTable(Student student){
+        Object[][] data = new Object[student.getAttendance().size()][6];
+
+        for(int j = 0; j < student.getAttendance().size(); j++){
+            data[j][0] = student.getAttendance().get(j).getAttendanceID();
+            data[j][1] = student.getAttendance().get(j).getDateOfAttendance();
+            data[j][2] = student.getAttendance().get(j).getStudent().getUserID();
+            data[j][3] = student.getAttendance().get(j).getStudent().getName();
+            data[j][4] = student.getAttendance().get(j).isPresent();
+            data[j][5] = student.getAttendance().get(j);
+        }
+
+        DefaultTableModel model = new DefaultTableModel(data, new Object[]{"ID", "date", "student ID", "Student Name", "Present", "Attendance"});
+        searchTable.setModel(model);
+
+        searchTable.setAutoCreateRowSorter(true); // sorting of the rows on a particular column
+        searchTable.getColumnModel().getColumn(5).setMaxWidth(0);
+        searchTable.getColumnModel().getColumn(5).setMinWidth(0);
     }
 
 

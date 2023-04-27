@@ -9,16 +9,15 @@ public class ManageAttendance extends JFrame{
     private JTable table1;
     private JButton saveButton;
     private JPanel rootPanel;
-    private LinkedList<Student> students;
+    private final LinkedList<Student> students;
 
-    private DefaultTableModel model;
     ManageAttendance(LinkedList<Student> students){
         this.students = students;
         this.setContentPane(rootPanel);
         this.setSize(900, 600);
 //        this.pack();
         this.setTitle("Manage Attendance");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
 
         createStudentsTable(students);
@@ -68,7 +67,7 @@ public class ManageAttendance extends JFrame{
             data[j][4] = students.get(j).getStrike();
             data[j][5] = students.get(j);
         }
-        model = new DefaultTableModel(data , new Object[] {"ID", "Name", "Email", "Attendance", "Number Of Absence", "Student"}) {
+        DefaultTableModel model = new DefaultTableModel(data, new Object[]{"ID", "Name", "Email", "Attendance", "Number Of Absence", "Student"}) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 if (columnIndex == 3) {
