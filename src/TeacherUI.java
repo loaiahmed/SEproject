@@ -75,8 +75,10 @@ public class TeacherUI extends JFrame{
         editAttendanceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Complaint complaint = (Complaint) getSelectedRow(complaintsTable);
-                new attendanceEditor(complaint.getAttendance());
+//                if(complaintsTable.isRowSelected(complaintsTable.getSelectedRow())) {
+                    Complaint complaint = (Complaint) getSelectedRow(complaintsTable);
+                    new attendanceEditor(complaint.getAttendance());
+//                }
             }
         });
         searchButton.addActionListener(new ActionListener() {       // horrible search implementation needs improvement
@@ -95,7 +97,8 @@ public class TeacherUI extends JFrame{
         editAttendanceButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new attendanceEditor((Attendance) getSelectedRow(searchTable));
+                Attendance attendance = (Attendance) getSelectedRow(searchTable);
+                new attendanceEditor(attendance);
             }
         });
     }
