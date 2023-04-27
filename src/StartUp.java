@@ -16,7 +16,7 @@ public class StartUp extends JFrame{
         this.setContentPane(rootPanel);
         this.setSize(600, 400);
 //        this.pack();
-        this.setTitle("Log In window");
+        this.setTitle("Start up window");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 

@@ -1,4 +1,5 @@
 
+import javax.swing.*;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -35,6 +36,16 @@ public class IT extends Staff {
         }
         allTeachers.remove(t);
     }
+    public void addHead(Head h){
+        allHeads.add(h);
+    }
+
+    public void removeHead(Head head){
+        if(!(allHeads.contains(head))){
+            System.out.println("Head not found");
+        }
+        allHeads.remove(head);
+    }
 
     public void assignHeadToCourse(Head head,Course c){
         head.getCourses().add(c);
@@ -45,11 +56,23 @@ public class IT extends Staff {
         c.getCourseDoctor().getCourses().remove(c);
         c.setCourseDoctor(null);
     }
+    public boolean unassignHeadToCourse(Head head, Course c){
+        if(!(allHeads.contains(head))){
+            System.out.println("Head not found");
+            return false;
+        }
+        if(!head.getCourses().remove(c)) {
+            System.out.println("course is not in head");
+            return false;
+        }
+        c.setCourseDoctor(null);
+        return true;
+    }
     public void assignTeacherToCourse(Teacher teacher,Course c){
         teacher.getCourses().add(c);
     }
-    public void unassignTeacherToCourse(Teacher teacher, Course c){
-        teacher.getCourses().remove(c);
+    public boolean unassignTeacherToCourse(Teacher teacher, Course c){
+        return teacher.getCourses().remove(c);
     }
     void addCourse(Course c){
         allCourses.add(c);
@@ -60,6 +83,7 @@ public class IT extends Staff {
             System.out.println("Course not found");
         }
         else{
+            c.getCourseDoctor().getCourses().remove(c);
             allCourses.remove(c);
         }
     }
@@ -176,4 +200,87 @@ public class IT extends Staff {
         return true;
     }
 
+    public LinkedList<Student> getUnAssignedStudents(){
+        LinkedList<Student> students = new LinkedList<>();
+        for(Student student : allStudents){
+            if(student.getCourses().isEmpty()){
+                students.add(student);
+            }
+        }
+        return students;
+    }
+    public LinkedList<Student> getAssignedStudents(){
+        LinkedList<Student> students = new LinkedList<>();
+        for(Student student : allStudents){
+            if(!(student.getCourses().isEmpty())){
+                students.add(student);
+            }
+        }
+        return students;
+    }
+    public LinkedList<Student> getStudentsWithCourse(Course course){
+        LinkedList<Student> students = new LinkedList<>();
+        for(Student student : allStudents){
+            if(student.getCourses().contains(course)){
+                students.add(student);
+            }
+        }
+        return students;
+    }
+
+    public LinkedList<Head> getUnAssignedHeads(){
+        LinkedList<Head> heads = new LinkedList<>();
+        for(Head head : allHeads){
+            if(head.getCourses().isEmpty()){
+                heads.add(head);
+            }
+        }
+        return heads;
+    }
+    public LinkedList<Head> getAssignedHeads(){
+        LinkedList<Head> heads = new LinkedList<>();
+        for(Head head : allHeads){
+            if(!(head.getCourses().isEmpty())){
+                heads.add(head);
+            }
+        }
+        return heads;
+    }
+    public LinkedList<Head> getHeadWithCourse(Course course){
+        LinkedList<Head> heads = new LinkedList<>();
+        for(Head head : allHeads){
+            if(head.getCourses().contains(course)){
+                heads.add(head);
+            }
+        }
+        return heads;
+    }
+
+    public LinkedList<Teacher> getUnAssignedTeacher(){
+        LinkedList<Teacher> teachers = new LinkedList<>();
+        for(Teacher teacher : allTeachers){
+            if(teacher.getCourses().isEmpty()){
+                teachers.add(teacher);
+            }
+        }
+        return teachers;
+    }
+    public LinkedList<Teacher> getAssignedTeacher(){
+        LinkedList<Teacher> teachers = new LinkedList<>();
+        for(Teacher teacher : allTeachers){
+            if(!(teacher.getCourses().isEmpty())){
+                teachers.add(teacher);
+            }
+        }
+        return teachers;
+    }
+    public LinkedList<Teacher> getTeacherWithCourse(Course course){
+        LinkedList<Teacher> teachers = new LinkedList<>();
+        for(Teacher teacher : allTeachers){
+            if(teacher.getCourses().contains(course)){
+                teachers.add(teacher);
+            }
+        }
+        return teachers;
+    }
 }

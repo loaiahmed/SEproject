@@ -83,9 +83,25 @@ public class Main {
         System.out.println(loai.getWarnings());
 
 
-        StudentUI studentUI = new StudentUI(loai);
-        HeadUI headUI = new HeadUI(head);
-        StartUp startUp = new StartUp();
-        TeacherUI t = new TeacherUI(teacher);
+
+        System.out.println("\n");
+
+        System.out.println("\n" + IT.allStudents);
+
+        System.out.println("\n");
+        for(Student student : IT.allStudents){
+            System.out.println( student.getAttendance().size() + " " + student.getStrike());
+        }
+        System.out.println("\n");
+
+        ManageAttendance manageAttendance = new ManageAttendance(IT.allStudents);
+
+//        ITUI itui = new ITUI(it);
+//        StudentUI studentUI = new StudentUI(loai);
+
+//        HeadUI headUI = new HeadUI(head);
+
+//        System.out.println("hello world: " + head.getCoursesRelatedStudents());
+//        StartUp startUp = new StartUp();
     }
 }

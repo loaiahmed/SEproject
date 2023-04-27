@@ -11,6 +11,12 @@ public class Course {
     public Course() {
     }
 
+    public Course(String courseCode, String courseName) {
+        this.courseID = count;
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        count++;
+    }
     public Course(String courseCode, String courseName, User courseDoctor) {
         this.courseID = count;
         this.courseCode = courseCode;

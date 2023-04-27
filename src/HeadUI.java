@@ -51,6 +51,7 @@ public class HeadUI extends JFrame{
                 }
                 else {
                     head.banStudent(getSelectedStudent(), (Course) comboBox1.getSelectedItem());
+                    JOptionPane.showMessageDialog(rootPanel, "ban done");
                 }
             }
         });
