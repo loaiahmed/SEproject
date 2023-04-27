@@ -28,7 +28,7 @@ public class ManageAttendance extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 saveAttendance();
                 testingData();
-                JOptionPane.showMessageDialog(rootPanel, "saved");
+                JOptionPane.showMessageDialog(rootPanel, "Saved");
             }
         });
     }

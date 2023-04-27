@@ -30,8 +30,8 @@ public class TeacherUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
-        this.teacher = teacher;
 
+        this.teacher = teacher;
 
         createComboBox(comboBox1);
         createStudentsTable(teacher.getCoursesRelatedStudents());
@@ -101,9 +101,19 @@ public class TeacherUI extends JFrame{
                 new attendanceEditor(attendance);
             }
         });
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logOut();
+            }
+        });
     }
 
 
+    public void logOut(){
+        this.dispose();
+        new StartUp();
+    }
 
     public void createComboBox(JComboBox comboBox1){
         comboBox1.addItem("All Courses");
