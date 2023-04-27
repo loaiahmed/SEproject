@@ -94,6 +94,16 @@ public class ITUI extends JFrame implements ActionListener{
         headComboBox.addActionListener(this::actionPerformed);
         teacherComboBox.addActionListener(this::actionPerformed);
 
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logOut();
+            }
+        });
+    }
+    public void logOut(){
+        this.dispose();
+        new StartUp();
     }
 
     @Override

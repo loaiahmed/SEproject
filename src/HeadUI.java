@@ -79,6 +79,17 @@ public class HeadUI extends JFrame{
                 }
             }
         });
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logOut();
+            }
+        });
+    }
+
+    public void logOut(){
+        this.dispose();
+        new StartUp();
     }
 
     public void append(String s) {

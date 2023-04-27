@@ -71,7 +71,19 @@ public class StudentUI extends JFrame{
                 JOptionPane.showMessageDialog(rootPanel, "Complaint Submitted");
             }
         });
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logOut();
+            }
+        });
     }
+
+    public void logOut(){
+        this.dispose();
+        new StartUp();
+    }
+
     public Attendance getSelectedAttendance(){
         DefaultTableModel dm = (DefaultTableModel)attendanceTable.getModel();
         Vector<Vector> data = dm.getDataVector();
