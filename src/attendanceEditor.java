@@ -26,6 +26,7 @@ public class attendanceEditor extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 attendance.setPresent(presentOrNotCheckBox.isSelected());
+                JOptionPane.showMessageDialog(rootPanel, "Saved");
             }
         });
     }
